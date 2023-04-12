@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace HFT.Logic.Interfaces
 {
-    public interface ICarLogic
+    public interface ISeatLogic
     {
         void Create(Car car);
         void Delete(int id);

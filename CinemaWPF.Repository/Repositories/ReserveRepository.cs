@@ -3,9 +3,9 @@ using CinemaWPF.Models;
 
 namespace CinemaWPF.Repository.Repositories
 {
-    public class CarRepository : Repository<Car>, ICarRepository
+    public class ReserveRepository : Repository<Reserve>, IReserveRepository
     {
-        public CarRepository(CarDbContext ctx) : base(ctx)
+        public ReserveRepository(CinemaDbContext ctx) : base(ctx)
         {
         }
     }

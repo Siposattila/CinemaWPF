@@ -18,14 +18,14 @@ namespace CinemaWPF.Endpoint
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<CarDbContext>();
+            services.AddSingleton<CinemaDbContext>();
 
-            services.AddTransient<IBrandRepository, BrandRepository>();
-            services.AddTransient<ICarRepository, CarRepository>();
+            services.AddTransient<ISeatRepository, BrandRepository>();
+            services.AddTransient<IReserveRepository, ReserveRepository>();
             services.AddTransient<IOwnerRepository, OwnerRepository>();
 
-            services.AddTransient<IBrandLogic, BrandLogic>();
-            services.AddTransient<ICarLogic, CarLogic>();
+            services.AddTransient<IReverseLogic, SeatLogic>();
+            services.AddTransient<ICarLogic, ReserveLogic>();
             services.AddTransient<IOwnerLogic, OwnerLogic>();
 
             services.AddControllers();

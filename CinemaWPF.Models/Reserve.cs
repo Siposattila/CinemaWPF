@@ -5,20 +5,18 @@ using System.Text.Json.Serialization;
 
 namespace CinemaWPF.Models
 {
-    [Table("owners")]
-    public class Owner : Entity
+    [Table("reserves")]
+    public class Reserve : Entity
     {
         [MaxLength(100)]
+        [MinLength(2)]
         [Required]
         public string Name { get; set; }
 
-        [JsonIgnore]
-        [NotMapped]
-        public virtual ICollection<Car> Cars { get; set; }
+        [ForeignKey(nameof(Seat))]
+        public int SeatId { get; set; }
 
-        public Owner()
-        {
-            this.Cars = new HashSet<Car>();
-        }
+        [NotMapped]
+        public virtual Seat Seat { get; set; }
     }
 }

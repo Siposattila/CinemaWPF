@@ -5,10 +5,10 @@ using HFT.Models;
 
 [Route("/api/car")]
 [ApiController]
-public class CarController : ControllerBase
+public class SeatController : ControllerBase
 {
-    ICarLogic logic;
-    public CarController(ICarLogic logic)
+    ISeatLogic logic;
+    public SeatController(ISeatLogic logic)
     {
         this.logic = logic;
     }

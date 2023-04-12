@@ -7,9 +7,9 @@ namespace CinemaWPF.Repository.Repositories
 {
     public class Repository<T> : IRepository<T> where T : Entity
     {
-        protected CarDbContext ctx;
+        protected CinemaDbContext ctx;
 
-        public Repository(CarDbContext ctx)
+        public Repository(CinemaDbContext ctx)
         {
             this.ctx = ctx ?? throw new ArgumentNullException(nameof(ctx));
         }
