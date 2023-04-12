@@ -18,15 +18,26 @@ namespace CinemaWPF.Client.ViewModels
     public class MainWindowViewModel : ObservableRecipient
     {
 
-        public RestCollection<Reserve> Reserves { get; set; }
-        public RestCollection<Seat> Seats { get; set; }
+        public RestCollection<Reserve> Seats { get; set; }
 
-        Seat selectedSeat;
-        public string Name { get; set; }
-        public Seat SelectedSeat
+        Reserve selectedSeat;
+        string name;
+        public string Name 
+        {
+            get { return name; }
+            set { 
+                name = value;
+                (ReserveSeat as RelayCommand).NotifyCanExecuteChanged();
+                }
+        }
+        public Reserve SelectedSeat
         {
             get {  return selectedSeat; }
-            set { selectedSeat = value; }
+            set { 
+                selectedSeat = value;
+                (ReserveSeat as RelayCommand).NotifyCanExecuteChanged();
+                (DeleteReserve as RelayCommand).NotifyCanExecuteChanged();
+            }
         }
 
         public ICommand ReserveSeat;
@@ -45,30 +56,28 @@ namespace CinemaWPF.Client.ViewModels
         {
             if (!IsInDesignMode)
             {
-                Reserves = new RestCollection<Reserve>("http://localhost:5000/", "reserve", "hub");
-                Seats = new RestCollection<Seat>("http://localhost:5000/", "seat", "hub");
+                Seats = new RestCollection<Reserve>("http://localhost:5000/", "reserve", "hub");
+                
 
 
                 ReserveSeat = new RelayCommand(() =>
                 {
-                    Reserves.Add(new Reserve()
-                    {
-                        SeatId = this.SelectedSeat.Id,
-                        Name = this.Name
-                    });
-
+                    SelectedSeat.Name = this.Name;
+                    Seats.Update(selectedSeat);
                 }, () =>
                 {
                     return this.SelectedSeat != null && this.Name.Length > 2;
                 }
                 );
+
                 DeleteReserve = new RelayCommand(() =>
                 {
-                    Reserves.Delete(SelectedSeat.Id);
+                    SelectedSeat.Name = "";
+                    Seats.Update(SelectedSeat);
                 },
                 () =>
                 {
-                    return SelectedSeat != null && Reserves.FirstOrDefault(x => x.SeatId == SelectedSeat.Id) != null;
+                    return SelectedSeat != null && SelectedSeat.Name != "";
                 });
             }
 
