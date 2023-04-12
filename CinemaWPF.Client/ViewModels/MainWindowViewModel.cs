@@ -17,11 +17,12 @@ namespace CinemaWPF.Client.ViewModels
 {
     public class MainWindowViewModel : ObservableRecipient
     {
-        
+
         public RestCollection<Reserve> Reserves { get; set; }
         public RestCollection<Seat> Seats { get; set; }
 
         Seat selectedSeat;
+        public string Name { get; set; }
         public Seat SelectedSeat
         {
             get {  return selectedSeat; }
