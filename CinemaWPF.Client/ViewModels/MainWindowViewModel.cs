@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using CinemaWPF.Client.RestCollection;
 using CinemaWPF.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
@@ -26,6 +27,9 @@ namespace CinemaWPF.Client.ViewModels
             get {  return selectedSeat; }
             set { selectedSeat = value; }
         }
+
+        public ICommand ReserveSeat;
+        public ICommand DeleteReserve;
         public static bool IsInDesignMode
         {
             get
