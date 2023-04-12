@@ -17,7 +17,7 @@ namespace CinemaWPF.Client.RestCollection
     {
         HttpClient client;
 
-        public RestService(string baseurl, string pingableEndpoint = "swagger")
+        public RestService(string baseurl, string pingableEndpoint = "api/reserve")
         {
             bool isOk = false;
             do

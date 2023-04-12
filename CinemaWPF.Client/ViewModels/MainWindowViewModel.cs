@@ -27,6 +27,7 @@ namespace CinemaWPF.Client.ViewModels
             get { return name; }
             set { 
                 name = value;
+                OnPropertyChanged();
                 (ReserveSeat as RelayCommand).NotifyCanExecuteChanged();
                 }
         }
@@ -35,6 +36,7 @@ namespace CinemaWPF.Client.ViewModels
             get {  return selectedSeat; }
             set { 
                 selectedSeat = value;
+                OnPropertyChanged();
                 (ReserveSeat as RelayCommand).NotifyCanExecuteChanged();
                 (DeleteReserve as RelayCommand).NotifyCanExecuteChanged();
             }
@@ -56,7 +58,7 @@ namespace CinemaWPF.Client.ViewModels
         {
             if (!IsInDesignMode)
             {
-                Seats = new RestCollection<Reserve>("http://localhost:5000/", "reserve", "hub");
+                Seats = new RestCollection<Reserve>("http://localhost:5000/", "api/reserve", "hub");
                 
 
 
