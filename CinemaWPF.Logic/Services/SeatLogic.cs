@@ -4,29 +4,29 @@ using CinemaWPF.Models;
 using System;
 using System.Collections.Generic;
 
-namespace HFT.Logic.Services
+namespace CinemaWPF.Logic.Services
 {
-    public class OwnerLogic : IOwnerLogic
+    public class SeatLogic : IReverseLogic
     {
-        IOwnerRepository ownerRepo;
-        public OwnerLogic(IOwnerRepository ownerRepo)
+        ISeatRepository brandRepo;
+        public SeatLogic(ISeatRepository brandRepo)
         {
-            this.ownerRepo = ownerRepo;
+            this.brandRepo = brandRepo;
         }
 
-        public void Create(Owner owner)
+        public void Create(Seat brand)
         {
-            ownerRepo.Create(owner);
+            brandRepo.Create(brand);
         }
 
         public void Delete(int id)
         {
-            ownerRepo.Delete(id);
+            brandRepo.Delete(id);
         }
 
-        public Owner Read(int id)
+        public Seat Read(int id)
         {
-            Owner brand = ownerRepo.Read(id);
+            Seat brand = brandRepo.Read(id);
             if (brand == null)
                 throw new ArgumentException("Brand with the specified id does not exists.");
             return brand;
@@ -34,14 +34,14 @@ namespace HFT.Logic.Services
             //return brandRepo.Read(id) ?? throw new ArgumentException("Brand with the specified id does not exists.");
         }
 
-        public IEnumerable<Owner> ReadAll()
+        public IEnumerable<Seat> ReadAll()
         {
-            return ownerRepo.ReadAll();
+            return brandRepo.ReadAll();
         }
 
-        public void Update(Owner owner)
+        public void Update(Seat brand)
         {
-            ownerRepo.Update(owner);
+            brandRepo.Update(brand);
         }
     }
 }

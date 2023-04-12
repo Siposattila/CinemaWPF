@@ -5,34 +5,34 @@ using CinemaWPF.Models;
 
 [Route("/api/brand")]
 [ApiController]
-public class BrandController : ControllerBase
+public class ReverseController : ControllerBase
 {
-    IBrandLogic logic;
-    public BrandController(IBrandLogic logic)
+    IReverseLogic logic;
+    public ReverseController(IReverseLogic logic)
     {
         this.logic = logic;
     }
 
     [HttpGet]
-    public IEnumerable<Brand> ReadAll()
+    public IEnumerable<Seat> ReadAll()
     {
         return this.logic.ReadAll();
     }
 
     [HttpGet("{id}")]
-    public Brand Read(int id)
+    public Seat Read(int id)
     {
         return this.logic.Read(id);
     }
 
     [HttpPost]
-    public void Create([FromBody] Brand brand)
+    public void Create([FromBody] Seat brand)
     {
         this.logic.Create(brand);
     }
 
     [HttpPut]
-    public void Put([FromBody] Brand brand)
+    public void Put([FromBody] Seat brand)
     {
         this.logic.Update(brand);
     }

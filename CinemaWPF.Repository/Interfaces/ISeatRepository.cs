@@ -2,7 +2,7 @@ using CinemaWPF.Models;
 
 namespace CinemaWPF.Repository.Interfaces
 {
-    public interface ICarRepository : IRepository<Car>
+    public interface ISeatRepository : IRepository<Seat>
     {
     }
 }

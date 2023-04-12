@@ -7,15 +7,13 @@ using System.Linq;
 
 namespace CinemaWPF.Logic.Services
 {
-    public class CarLogic : ICarLogic
+    public class ReserveLogic : IReverseLogic
     {
-        ICarRepository carRepo;
-        IOwnerRepository ownerRepo;
-        IBrandRepository brandRepo;
-        public CarLogic(ICarRepository carRepo, IOwnerRepository ownerRepo, IBrandRepository brandRepo)
+        IReserveRepository carRepo;
+        ISeatRepository brandRepo;
+        public ReserveLogic(IReserveRepository carRepo, ISeatRepository brandRepo)
         {
             this.carRepo = carRepo;
-            this.ownerRepo = ownerRepo;
             this.brandRepo = brandRepo;
         }
 

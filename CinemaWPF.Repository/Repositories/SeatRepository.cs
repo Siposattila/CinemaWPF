@@ -3,9 +3,9 @@ using CinemaWPF.Models;
 
 namespace CinemaWPF.Repository.Repositories
 {
-    public class BrandRepository : Repository<Brand>, IBrandRepository
+    public class SeatRepository : Repository<Seat>, ISeatRepository
     {
-        public BrandRepository(CarDbContext ctx) : base(ctx)
+        public SeatRepository(CinemaDbContext ctx) : base(ctx)
         {
         }
     }
