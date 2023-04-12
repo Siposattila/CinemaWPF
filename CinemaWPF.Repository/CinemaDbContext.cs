@@ -5,7 +5,7 @@ namespace CinemaWPF.Repository
 {
     public partial class CinemaDbContext : DbContext
     {
-        public virtual DbSet<Reserve> Owners { get; set; }
+        public virtual DbSet<Reserve> Reserves { get; set; }
 
         public CinemaDbContext()
         {

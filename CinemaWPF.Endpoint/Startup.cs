@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CinemaWPF.Logic.Interfaces;
 using CinemaWPF.Logic.Services;
-using CinemaWPF.Models;
 using CinemaWPF.Repository;
 using CinemaWPF.Repository.Interfaces;
 using CinemaWPF.Repository.Repositories;
+using CinemaWPF.Endpoint.Services;
 
 namespace CinemaWPF.Endpoint
 {
@@ -20,13 +19,11 @@ namespace CinemaWPF.Endpoint
         {
             services.AddSingleton<CinemaDbContext>();
 
-            services.AddTransient<ISeatRepository, BrandRepository>();
             services.AddTransient<IReserveRepository, ReserveRepository>();
-            services.AddTransient<IOwnerRepository, OwnerRepository>();
 
-            services.AddTransient<IReserveLogic, SeatLogic>();
-            services.AddTransient<ICarLogic, ReserveLogic>();
-            services.AddTransient<IOwnerLogic, OwnerLogic>();
+            services.AddTransient<IReserveLogic, ReserveLogic>();
+
+            services.AddSignalR();
 
             services.AddControllers();
         }
@@ -44,6 +41,7 @@ namespace CinemaWPF.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

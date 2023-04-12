@@ -9,29 +9,31 @@ namespace CinemaWPF.Logic.Services
 {
     public class ReserveLogic : IReserveLogic
     {
+        IRepository<Reserve> repo;
+
         public void Create(Reserve reserve)
         {
-            throw new NotImplementedException();
+            this.repo.Create(reserve);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            this.repo.Delete(id);
         }
 
         public Reserve Read(int id)
         {
-            throw new NotImplementedException();
+            return this.repo.Read(id);
         }
 
         public IEnumerable<Reserve> ReadAll()
         {
-            throw new NotImplementedException();
+            return this.repo.ReadAll();
         }
 
         public void Update(Reserve reserve)
         {
-            throw new NotImplementedException();
+            this.repo.Update(reserve);
         }
     }
 }
