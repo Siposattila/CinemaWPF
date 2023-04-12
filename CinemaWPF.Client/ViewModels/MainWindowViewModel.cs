@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,6 +19,13 @@ namespace CinemaWPF.Client.ViewModels
         
         public RestCollection<Reserve> Reserves { get; set; }
         public RestCollection<Seat> Seats { get; set; }
+
+        Seat selectedSeat;
+        public Seat SelectedSeat
+        {
+            get {  return selectedSeat; }
+            set { selectedSeat = value; }
+        }
         public static bool IsInDesignMode
         {
             get
@@ -34,6 +42,8 @@ namespace CinemaWPF.Client.ViewModels
             {
                 Reserves = new RestCollection<Reserve>("http://localhost:5000/", "reserve", "hub");
                 Seats = new RestCollection<Seat>("http://localhost:5000/", "seat", "hub");
+
+                
             //    CreateActorCommand = new RelayCommand(() =>
             //    {
             //        Actors.Add(new Actor()
