@@ -1,6 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.17" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CinemaWPF.Logic\CinemaWPF.Logic.csproj" />
     <ProjectReference Include="..\CinemaWPF.Repository\CinemaWPF.Repository.csproj" />
     <ProjectReference Include="..\CinemaWPF.Models\CinemaWPF.Models.csproj" />

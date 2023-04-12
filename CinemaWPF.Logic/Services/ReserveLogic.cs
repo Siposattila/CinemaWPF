@@ -7,106 +7,31 @@ using System.Linq;
 
 namespace CinemaWPF.Logic.Services
 {
-    public class ReserveLogic : IReverseLogic
+    public class ReserveLogic : IReserveLogic
     {
-        IReserveRepository carRepo;
-        ISeatRepository brandRepo;
-        public ReserveLogic(IReserveRepository carRepo, ISeatRepository brandRepo)
+        public void Create(Reserve reserve)
         {
-            this.carRepo = carRepo;
-            this.brandRepo = brandRepo;
-        }
-
-        public void Create(Car car)
-        {
-            if (car.Model == string.Empty)
-            {
-                throw new InvalidOperationException("The model of the car cannot be empty!");
-            }
-
-            carRepo.Create(car);
+            throw new NotImplementedException();
         }
 
         public void Delete(int id)
         {
-            carRepo.Delete(id);
+            throw new NotImplementedException();
         }
 
-        public Car Read(int id)
+        public Reserve Read(int id)
         {
-            return carRepo.Read(id) ?? throw new ArgumentException("Car with the specified id does not exists.");
+            throw new NotImplementedException();
         }
 
-        public IEnumerable<Car> ReadAll()
+        public IEnumerable<Reserve> ReadAll()
         {
-            return carRepo.ReadAll();
+            throw new NotImplementedException();
         }
 
-        public void Update(Car car)
+        public void Update(Reserve reserve)
         {
-            carRepo.Update(car);
-        }
-
-        public double AVGPrice()
-        {
-            return carRepo.ReadAll()
-                .Average(t => t.BasePrice) ?? -1;
-        }
-
-        public IEnumerable<KeyValuePair<string, double>> AVGPriceByBrands()
-        {
-            return from x in carRepo.ReadAll()
-                   group x by x.Brand.Name into g
-                   select new KeyValuePair<string, double>
-                   (g.Key, g.Average(t => t.BasePrice) ?? -1);
-        }
-
-        public IEnumerable<KeyValuePair<string, double>> AVGPriceByOwners()
-        {
-            return from x in carRepo.ReadAll()
-                   group x by x.Owner.Name into g
-                   select new KeyValuePair<string, double>
-                   (g.Key, g.Average(t => t.BasePrice) ?? -1);
-        }
-
-        public IEnumerable<string> OwnersByBrandName(string name)
-        {
-            if (name == string.Empty)
-            {
-                throw new ArgumentException("The given brand name is invalid!");
-            }
-
-            return from c in carRepo.ReadAll()
-                where c.Brand.Name == name
-                select c.Owner.Name;
-        }
-
-        public IEnumerable<KeyValuePair<string, string>> GetOwnersWithCars()
-        {
-            List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
-            var o = ownerRepo.ReadAll();
-            var c = carRepo.ReadAll();
-            foreach (var owner in o)
-            {
-                var a = c.Where(x => x.Owner.Name == owner.Name).Select(x => x.Model).ToList();
-                result.Add(new KeyValuePair<string, string>(owner.Name, string.Join(", ", a)));
-            }
-
-            return result;
-        }
-
-        public IEnumerable<KeyValuePair<string, string>> GetCarsByBrands()
-        {
-            List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
-            var b = brandRepo.ReadAll();
-            var c = carRepo.ReadAll();
-            foreach (var brand in b)
-            {
-                var a = c.Where(x => x.Brand.Name == brand.Name).Select(x => x.Model).ToList();
-                result.Add(new KeyValuePair<string, string>(brand.Name, string.Join(", ", a)));
-            }
-
-            return result;
+            throw new NotImplementedException();
         }
     }
 }

@@ -13,10 +13,7 @@ namespace CinemaWPF.Models
         [Required]
         public string Name { get; set; }
 
-        [ForeignKey(nameof(Seat))]
-        public int SeatId { get; set; }
-
-        [NotMapped]
-        public virtual Seat Seat { get; set; }
+        [Range(0, 1)]
+        public int Reserved { get; set; }
     }
 }

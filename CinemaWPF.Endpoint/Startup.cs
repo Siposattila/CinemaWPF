@@ -24,7 +24,7 @@ namespace CinemaWPF.Endpoint
             services.AddTransient<IReserveRepository, ReserveRepository>();
             services.AddTransient<IOwnerRepository, OwnerRepository>();
 
-            services.AddTransient<IReverseLogic, SeatLogic>();
+            services.AddTransient<IReserveLogic, SeatLogic>();
             services.AddTransient<ICarLogic, ReserveLogic>();
             services.AddTransient<IOwnerLogic, OwnerLogic>();
 
