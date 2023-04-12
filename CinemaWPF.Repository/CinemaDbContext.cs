@@ -5,7 +5,6 @@ namespace CinemaWPF.Repository
 {
     public partial class CinemaDbContext : DbContext
     {
-        public virtual DbSet<Seat> Brands { get; set; }
         public virtual DbSet<Reserve> Owners { get; set; }
 
         public CinemaDbContext()
@@ -28,26 +27,27 @@ namespace CinemaWPF.Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Seat>().HasData(
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat()
+            modelBuilder.Entity<Reserve>().HasData(
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve(),
+                new Reserve()
             );
         }
     }
